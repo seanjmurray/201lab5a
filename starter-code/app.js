@@ -9,9 +9,7 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sum(a, b) { //eslint-disable-line
-  var add = a + b;
-  var string = 'The sum of ' + a + ' and ' + b + ' is ' + add + '.';
-  return [add, string];
+  return [a+b, 'The sum of ' + a + ' and ' + b + ' is ' + (a + b) + '.'];
 }
 
 // Here is the test for sum(); uncomment it to run it
@@ -30,7 +28,6 @@ Test this function by hand in the console to get it working, and when you think 
 // Write your code here
 function multiply(a, b) { //eslint-disable-line
   return [ a*b,'The product of '+ a +' and '+ b + ' is ' + a*b +'.'];
-
 }
 
 // Here is the test for multiply(); uncomment it to run it
@@ -51,7 +48,10 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a, b, c) { //eslint-disable-line
-  return [sum(a,sum(b,c)[0])[0],multiply(a,multiply(b,c)[0])[0],a +' and '+ b +' and ' +c+' sum to ' +sum(a,sum(b,c)[0])[0] +'.','The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + multiply(a,multiply(b,c)[0])[0] + '.'];
+  return [sum(a,sum(b,c)[0])[0],
+  multiply(a,multiply(b,c)[0])[0],
+  a +' and '+ b +' and ' +c+' sum to ' +sum(a,sum(b,c)[0])[0] +'.',
+  'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + multiply(a,multiply(b,c)[0])[0] + '.'];
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
@@ -70,15 +70,16 @@ IMPORTANT DETAIL: You may not use the arithmetic operator + in this function. To
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testSumArray() function and see if the test passes.*/
 
 // Write your code here
-// var testArray = [2, 3, 4]; //eslint-disable-line
+var testArray = [2, 3, 4]; //eslint-disable-line
 
 function sumArray(sumArr) { //eslint-disable-line
-
+  var reducer = (accumulator, currentValue) => sum(accumulator, currentValue)[0];
+  return [sumArr.reduce(reducer), sumArr + ' was passed in as an array of numbers, and ' + sumArr.reduce(reducer) + ' is their sum.'];
 }
 
 // Here is the test for sumArray(); uncomment it to run it
 
-// testSumArray(testArray);
+testSumArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
